@@ -26,21 +26,14 @@ public class CharacterMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         controller.Move(Vector3.forward * verticalInput * Time.deltaTime * speed);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            velocity.z = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if (Input.GetButtonDown("Jump") && isGrounded) {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
         }
 
-
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
         velocity.y += gravity * Time.deltaTime;
-        velocity.z += gravity * Time.deltaTime;
-        if (isGrounded && (velocity.y < 0 || velocity.z < 0))
-        {
-            velocity.y = 0f;
-            velocity.z = 0f;
+        if (isGrounded && (velocity.y <= 0)) {
+            velocity.y = -3f;
         }
         controller.Move(velocity * Time.deltaTime);
     }
