@@ -14,12 +14,6 @@ public class ChasePlayer : MonoBehaviour
     [SerializeField]
     private float lookDistance = 5.0f;
 
-
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.name == "Player") {
-            SceneManager.LoadScene("Combat", LoadSceneMode.Additive);
-        }
-    }
     void Update()
     {
         var step = speed * Time.deltaTime;

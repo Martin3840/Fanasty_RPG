@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3f696573d834fd0b3c84f6b052fe2a, type: 3}
+  m_Name: Orc 1
+  m_EditorClassIdentifier: 
+  name: Orc 1
+  level: 12
+  sprite: {fileID: 21300000, guid: 87cdfcb988c9f473299d59be7e21fd00, type: 3}
+  health: 100
+  attack: 20
+  defense: 2
+  speed: 98
+  isPlayer: 0
