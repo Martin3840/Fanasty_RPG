@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Fern
   m_EditorClassIdentifier: 
   name: Fern
-  level: 15
+  level: 1
   sprite: {fileID: 21300000, guid: 5d8bf55df2464464cbddafd01e44976f, type: 3}
-  health: 153
+  health: 1
   attack: 7
   defense: 23
   speed: 100

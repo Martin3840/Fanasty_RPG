@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Stark
   m_EditorClassIdentifier: 
   name: Stark
-  level: 7
+  level: 1
   sprite: {fileID: 21300000, guid: e79ba389550c645b6a0f48da38f69b7b, type: 3}
-  health: 102
+  health: 3
   attack: 9
   defense: 23
   speed: 105

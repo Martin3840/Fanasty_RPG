@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - BattleSystem
+  - World
+  - DamagePopup
   layers:
   - Default
   - TransparentFX
