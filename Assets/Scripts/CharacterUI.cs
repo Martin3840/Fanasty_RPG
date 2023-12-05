@@ -53,9 +53,9 @@ public class CharacterUI : MonoBehaviour
     public IEnumerator HpDecrease(int damage)
     {
         var padding = _hpMask.padding;
-
-        float onePercent = currHP / 100;
-        for (int i = 0; i < 100; i++)
+        float tempHP = currHP;
+        float onePercent = damage / 50;
+        for (int i = 0; i <= 50 && currHP >= 0; i++)
         {
             currHP -= onePercent;
             padding.z = (float)(maxHP - currHP) / maxHP * _hpBarRect.rect.width * 3;
@@ -63,13 +63,20 @@ public class CharacterUI : MonoBehaviour
             _hpIndicator.SetText(((int)currHP).ToString() + "/" + ((int)maxHP).ToString());
             yield return new WaitForSeconds(0.01f);
         }
+
+        currHP = tempHP - damage;
+        if (currHP < 0)
+            currHP = 0;
+        padding.z = (float)(maxHP - currHP) / maxHP * _hpBarRect.rect.width * 3;
+        _hpMask.padding = padding;
+        _hpIndicator.SetText(((int)currHP).ToString() + "/" + ((int)maxHP).ToString());
     }
     public IEnumerator SetManaValue(int usedMana)
     {
         var padding = _manaMask.padding;
 
         float onePercent = currMana / 100;
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 100 && currHP > 0; i++)
         {
             currMana -= onePercent;
             padding.z = (float)(maxMana - currMana) / maxMana * _manaBarRect.rect.width * 3;

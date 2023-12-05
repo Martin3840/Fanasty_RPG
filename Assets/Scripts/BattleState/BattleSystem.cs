@@ -83,11 +83,9 @@ public class BattleSystem : MonoBehaviour
         }
         SetTarget(enemyParty[0]);
 
-        SortTurn();
-
-        turnOrder[0].GetComponent<CombatStats>().UpdateUI();
-
         yield return new WaitForSeconds(2f);
+
+        SortTurn();
     }
     
     IEnumerator PlayerAttack(GameObject attacker, GameObject target)
@@ -155,7 +153,7 @@ public class BattleSystem : MonoBehaviour
         attacker.transform.Translate(new(0f,-0.1f,0f));
 
         yield return new WaitForSeconds(1f);
-
+    
         CheckBattle();
         
         attacker.GetComponent<CombatStats>().av += 1000 / attacker.GetComponent<CombatStats>().stats.speed;

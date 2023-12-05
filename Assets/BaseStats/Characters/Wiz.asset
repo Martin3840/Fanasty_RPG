@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Wiz
   m_EditorClassIdentifier: 
   name: Wiz
-  level: 1
+  level: 5
   sprite: {fileID: 21300000, guid: 87cdfcb988c9f473299d59be7e21fd00, type: 3}
-  health: 4
-  attack: 10
+  profilePic: {fileID: 0}
+  health: 17
+  attack: 2
   defense: 15
   speed: 103
+  mana: 13
   isPlayer: 1
