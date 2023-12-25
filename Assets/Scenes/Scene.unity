@@ -187,10 +187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characters:
-  - {fileID: 11400000, guid: 0de30abd5c15f46238914f41a086721b, type: 2}
-  - {fileID: 11400000, guid: f9e5fc570385b4191aafeb5c5a638399, type: 2}
-  - {fileID: 11400000, guid: f5011802464f84284a37bd25487b194e, type: 2}
-  - {fileID: 11400000, guid: 0cebd8bb975e24b44be2ac8e3eeabdf6, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &421966584
 MonoBehaviour:
   m_ObjectHideFlags: 0

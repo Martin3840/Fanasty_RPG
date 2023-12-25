@@ -6,6 +6,6 @@ public class PickTarget : MonoBehaviour
 {
     void OnMouseDown()
     {
-        GameObject.FindWithTag("BattleSystem").GetComponent<BattleSystem>().SetTarget(gameObject);
+        GameObject.FindWithTag("BattleSystem").GetComponent<BattleSystem>().SetTarget(this.gameObject);
     }
 }
