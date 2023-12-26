@@ -48,11 +48,9 @@ public class BattleSystem : MonoBehaviour
     {
         //Setup party members location and stats
         int charUIOffset = 150;
-        int locationIndex = 0;
-        foreach (Character character in playerParty)
+        for (int i = 0; i < playerParty.Count; i++)
         {
-            turnOrder.Add(character);
-
+            turnOrder.Add(playerParty[i]);
 
             newCharUI = Instantiate(CharacterUIPrefab);
             newCharUI.transform.SetParent(CharacterList.transform);
@@ -60,14 +58,17 @@ public class BattleSystem : MonoBehaviour
             newCharUI.transform.localScale = new Vector2(1,1);
             charUIOffset -= 100;
 
-            character.characterUI = newCharUI.GetComponent<CharacterUI>();
-            character.UpdateUI();
-            locationIndex++;
+            playerParty[i].characterUI = newCharUI.GetComponent<CharacterUI>();
+            playerParty[i].UpdateUI();
+
+            playerParty[i].EnterCombat(this, playerPrefab, playerLocation[i]);
         }
 
         //Setup Enemy
-        foreach (Character enemy in enemyParty) { 
-            turnOrder.Add(enemy);
+        for (int i = 0; i < enemyParty.Count; i++)
+        { 
+            turnOrder.Add(enemyParty[i]);
+            enemyParty[i].EnterCombat(this, enemyPrefab, playerLocation[i]);
         }
         SetTarget(enemyParty[0]);
 
@@ -90,7 +91,7 @@ public class BattleSystem : MonoBehaviour
 
         CheckBattle();
         
-        attacker.av += 1000 / attacker.stats["speed"].Value;
+        attacker.actionValue += 1000 / attacker.stats["speed"].Value;
         SortTurn();
     }
     void Kill(Character target)
@@ -108,7 +109,7 @@ public class BattleSystem : MonoBehaviour
                 Destroy(Crosshair);
         }
         turnOrder.Remove(target);
-        Destroy(target);
+        Destroy(target.spriteObject);
     }
     void PlayerTurn()
     {
@@ -146,7 +147,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttack(turnOrder[0],playerTarget));
     }
 
-    void SortTurn()
+    public void SortTurn()
     {
         int size = turnOrder.Count;
         for (int i = 1; i < size; i++)
@@ -154,7 +155,7 @@ public class BattleSystem : MonoBehaviour
             Character key = turnOrder[i];
             int j = i - 1;
 
-            while (j >= 0 && turnOrder[j].av > key.av)
+            while (j >= 0 && turnOrder[j].actionValue > key.actionValue)
             {
                 turnOrder[j+1] = turnOrder[j];
                 j--;
@@ -163,7 +164,7 @@ public class BattleSystem : MonoBehaviour
         }
         for (int i = size - 1; i >= 0; i--)
         {
-            turnOrder[i].av -= turnOrder[0].av;
+            turnOrder[i].actionValue -= turnOrder[0].actionValue;
         }
 
         if (turnOrder[0].isPlayer) {

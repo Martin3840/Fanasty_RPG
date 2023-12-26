@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyTeam : MonoBehaviour
 {
-    public List<RPGStats> party = new();
+    public List<Character> party = new();
 }

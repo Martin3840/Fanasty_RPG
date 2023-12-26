@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f3f696573d834fd0b3c84f6b052fe2a, type: 3}
-  m_Name: Wiz
+  m_Name: BaseStat
   m_EditorClassIdentifier: 
-  name: Wiz
-  level: 5
-  sprite: {fileID: 21300000, guid: 87cdfcb988c9f473299d59be7e21fd00, type: 3}
-  profilePic: {fileID: 0}
-  health: 17
-  attack: 2
-  defense: 15
-  speed: 103
-  mana: 13
-  isPlayer: 1
+  health: 80
+  physical_attack: 1
+  physical_defense: 5
+  magic_attack: 15
+  magic_defense: 10
+  speed: 5
+  mana: 10
+  accuracy: 50

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Team : MonoBehaviour
 {
-    public List<Character> characters = new();
+    public List<Character> characters = new List<Character>();
 }

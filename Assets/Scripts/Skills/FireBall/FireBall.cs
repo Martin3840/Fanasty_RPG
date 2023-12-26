@@ -13,7 +13,7 @@ public class FireBall : Skill
     public BattleSystem battleSystem;
     bool Crit;
     GameObject target;
-    void Start()
+    void Awake()
     {
         Debug.Log("SkillButton Summoned!");
         /*

@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class EnemyDisplay : MonoBehaviour
 {
-    public RPGStats stats;
+    public Sprite sprite;
 
     public GameObject spriteImage;
     // Start is called before the first frame update
     void Start()
     {
-        spriteImage.GetComponent<SpriteRenderer>().sprite = stats.sprite;
+        spriteImage.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 }

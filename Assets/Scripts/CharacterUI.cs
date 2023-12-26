@@ -24,7 +24,7 @@ public class CharacterUI : MonoBehaviour
     [SerializeField]
     private TMP_Text _manaIndicator;
 
-    private Image profilePicture;
+    public Image _profilePicture;
 
     private float currHP;
     private float maxHP;
@@ -32,9 +32,9 @@ public class CharacterUI : MonoBehaviour
     private float currMana;
     private float maxMana;
 
-    public void Setup(float newCurrHP, float newMaxHP, float newCurrMana, float newMaxMana, Image newProfilePic)
+    public void Setup(float newCurrHP, float newMaxHP, float newCurrMana, float newMaxMana, Sprite newProfilePic)
     {
-        profilePicture = newProfilePic;
+        _profilePicture.sprite = newProfilePic;
 
         currHP = newCurrHP;
         maxHP = newMaxHP;

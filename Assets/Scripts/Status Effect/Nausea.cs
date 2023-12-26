@@ -8,17 +8,17 @@ public class Nausea : Status
     public float value;
     Character holder;
 
-    public void Apply(Character target)
+    public override void Apply(Character target)
     {
         holder = target;
         mod = new StatModifier(value, StatModType.PercentAdd,this);
-        target.accuracy.AddModifier(mod);
-        target.status.Add(this);
+        target.stats["accuracy"].AddModifier(mod);
+        base.Apply(target);
     }
 
     public override void End()
     {
-        holder.accuracy.RemoveModifier(mod);
-        holder.status.Remove(this);
+        base.End();
+        holder.stats["accuracy"].RemoveModifier(mod);
     }
 }

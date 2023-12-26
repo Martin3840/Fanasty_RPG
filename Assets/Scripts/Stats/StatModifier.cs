@@ -15,9 +15,9 @@ public class StatModifier{
         order = o;
         source = s;
     }
-    public StatModifier(float v, StatModType t) : this(v, t, (int)t, null) { }
-    public StatModifier(float v, StatModType t, int o) : this(v, t, o, null) { }
-    public StatModifier(float v, StatModType t, object s) : this(v,t,(int)t,s) { }
+    public StatModifier(float value, StatModType type) : this(value, type, (int)type, null) { }
+    public StatModifier(float value, StatModType type, int order) : this(value, type, order, null) { }
+    public StatModifier(float value, StatModType type, object source) : this(value, type, (int)type, source) { }
 }
 
 public enum StatModType
