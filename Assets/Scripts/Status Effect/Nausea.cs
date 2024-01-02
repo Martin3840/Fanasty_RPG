@@ -12,13 +12,13 @@ public class Nausea : Status
     {
         holder = target;
         mod = new StatModifier(value, StatModType.PercentAdd,this);
-        target.stats["accuracy"].AddModifier(mod);
+        target.stats[Stat.accuracy].AddModifier(mod);
         base.Apply(target);
     }
 
     public override void End()
     {
         base.End();
-        holder.stats["accuracy"].RemoveModifier(mod);
+        holder.stats[Stat.accuracy].RemoveModifier(mod);
     }
 }

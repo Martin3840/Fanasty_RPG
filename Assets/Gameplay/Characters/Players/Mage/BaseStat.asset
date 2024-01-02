@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3f696573d834fd0b3c84f6b052fe2a, type: 3}
   m_Name: BaseStat
   m_EditorClassIdentifier: 
-  health: 80
-  physical_attack: 1
+  health: 50
+  physical_attack: 8
   physical_defense: 5
   magic_attack: 15
   magic_defense: 10
   speed: 5
-  mana: 10
+  mana: 15
   accuracy: 50

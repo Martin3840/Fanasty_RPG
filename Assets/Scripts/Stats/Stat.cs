@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Collections.ObjectModel;
 
 [System.Serializable]
-public class Stat
+public class StatValue
 {
     protected bool modified = true;
     protected float _value;
@@ -17,12 +17,12 @@ public class Stat
     protected readonly List<StatModifier> statModifiers;
     float percentAddSum = 0;
     public readonly ReadOnlyCollection<StatModifier> StatModifiers;
-    public Stat()
+    public StatValue()
     {
         statModifiers = new List<StatModifier>();
         StatModifiers = statModifiers.AsReadOnly();
     }
-    public Stat(float b) : this()
+    public StatValue(float b) : this()
     {
         baseValue = b;
     }

@@ -1,89 +1,88 @@
+using System;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEditor.Build.Pipeline.Interfaces;
 using UnityEngine;
-using UnityEngine.AI;
 
-[CreateAssetMenu(fileName = "NewCharacterName", menuName = "Character")]
-public class Character : ScriptableObject
+public class Character : MonoBehaviour
 {
-    [System.NonSerialized]
-    public GameObject spriteObject;
-    [System.NonSerialized]
-    public CharacterUI characterUI;
-    [System.NonSerialized]
-    public float actionValue;
-    BattleSystem battleSystem;
+    public static event Action<Character> OnBattleJoined;
+    public static event Action<Character> OnTurnStart;
+    public static event Action<Character> OnTurnEnded;
+    public static event Action<Character> OnStaticDeath;
+    public event Action OnDeath;
+    public event Action<int> OnDamaged;
+    [System.NonSerialized] public float actionValue;
     public RPGStats baseStats;
-    public Sprite sprite;
-    public Sprite profile_picture;
+    public Sprite profilePicture;
     public new string name;
     public int level;
-    private float currentHp;
-    private float currentMana;
+    public float currentHp;
+    public float currentMana;
     public bool isPlayer;
-    public Skill normalAttack;
+
     public Skill passive;
+    public Skill attack;
     public Skill skill1;
     public Skill skill2;
     public Skill skill3;
     public Skill ultimate;
 
-    public Dictionary<string,Stat> stats;
-    public HashSet<Status> statusEffects;
+    public Dictionary<Stat, StatValue> stats = new();
+    public HashSet<Status> statusEffects = new();
+    
+    public virtual void Awake()
+    {
+        UpdateStats();
+        OnBattleJoined?.Invoke(this);
+    }
 
-    private int oldLevel;
     public void UpdateStats()
     {
-        if (level == oldLevel) return;
         stats = baseStats.GetAllStats(level);
     }
 
     public void TurnStart()
     {
+        Debug.Log(name + "'s turn started!");
         foreach (Status effect in statusEffects)
             effect.Tick();
+        Character.OnTurnStart += skill1.Cast;
+        OnTurnStart?.Invoke(this);
     }
     public void TurnEnd()
     {
-        actionValue += 1000 / stats["speed"].Value;
-        battleSystem.SortTurn();
-    }
-    public void EnterCombat(BattleSystem system, GameObject prefab, Transform location)
-    {
-        battleSystem = system;
-        spriteObject = Instantiate(prefab, location);
-        spriteObject.GetComponent<SpriteRenderer>().sprite = profile_picture;
-        UpdateStats();
+        actionValue += 1000 / stats[Stat.speed].Value;
+        OnTurnEnded?.Invoke(this);
     }
 
-    public virtual void UpdateUI()
+    public int TakeDamage(float damage)
     {
-        characterUI.Setup(currentHp, stats["health"].Value, currentMana, stats["mana"].Value, profile_picture);
-    }
-
-    public virtual int TakeDamage(float damage)
-    {
-        float damageReduce = 100 / (100 + stats["physical_defense"].Value);
+        float damageReduce = 100 / (100 + stats[Stat.physical_defense].Value);
         float finalDamage = damage * damageReduce;
         
         currentHp -= finalDamage;
 
-        int finalInt = (int) finalDamage;
-        if (isPlayer)
+        if (currentHp < 0)
         {
-            characterUI.SetHpValue(finalInt);
+            currentHp = 0;
+            Despawn();
         }
-        return finalInt;
-    }
 
-    public virtual bool IsDead()
-    {
-        return currentHp <= 0;
+        int finalDamageInt = (int) finalDamage;
+
+        OnDamaged(finalDamageInt);
+
+        return finalDamageInt;
     }
 
     public void Despawn()
     {
-        Destroy(spriteObject);
+        OnStaticDeath?.Invoke(this);
+        OnDeath?.Invoke();
+        Destroy(this.gameObject);
+    }
+
+    public void ReceiveStatus(Status status)
+    {
+        statusEffects.Add(status);
     }
 }

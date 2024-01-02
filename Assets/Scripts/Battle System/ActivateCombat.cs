@@ -14,11 +14,6 @@ public class ActivateCombat : MonoBehaviour
 
             var scene = SceneManager.LoadSceneAsync("Combat",LoadSceneMode.Additive);
             scene.completed += (x) => {
-                BattleSystem battleSystemObject = GameObject.FindWithTag("BattleSystem").GetComponent<BattleSystem>();
-                battleSystemObject.playerObject = this.gameObject;
-                battleSystemObject.enemyObject = collision.gameObject;
-                battleSystemObject.StartBattle();
-                battleSystemObject.world = world;
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName("Combat"));
             };
         }
