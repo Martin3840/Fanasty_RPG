@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9121092503453574714}
   - component: {fileID: -7790800757897929299}
   - component: {fileID: 8203839561382697888}
+  - component: {fileID: -7884038093855637003}
   m_Layer: 0
   m_Name: Assasin
   m_TagString: Untagged
@@ -53,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: ec718625f88cf46e692abe19996c6a07, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,3 +111,15 @@ MonoBehaviour:
   skill2: {fileID: 11400000, guid: 07fe5be0c7a124ac081505c2159a07f8, type: 2}
   skill3: {fileID: 11400000, guid: 07fe5be0c7a124ac081505c2159a07f8, type: 2}
   ultimate: {fileID: 11400000, guid: 07fe5be0c7a124ac081505c2159a07f8, type: 2}
+--- !u!114 &-7884038093855637003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023184664697747662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43427bfbd0f0a40f2a1b5ae206d4ec5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

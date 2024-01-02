@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7854173332180408541}
   - component: {fileID: 3537175579400086549}
   - component: {fileID: -7650717848293467131}
+  - component: {fileID: -6645672371780568987}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -55,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: ec718625f88cf46e692abe19996c6a07, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,3 +160,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.16}
   m_Size: {x: 0.34, y: 0.32}
   m_Direction: 0
+--- !u!114 &-6645672371780568987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795061001092644436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43427bfbd0f0a40f2a1b5ae206d4ec5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
