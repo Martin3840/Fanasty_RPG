@@ -10,9 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8186837236930072042}
   - component: {fileID: 7854173332180408541}
-  - component: {fileID: 3537175579400086549}
-  - component: {fileID: -7650717848293467131}
-  - component: {fileID: -6645672371780568987}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -29,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5795061001092644436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -59,62 +56,3 @@ MonoBehaviour:
   skill2: {fileID: 11400000, guid: f04b1f04b613941fda8cdd089146ec3a, type: 2}
   skill3: {fileID: 11400000, guid: f04b1f04b613941fda8cdd089146ec3a, type: 2}
   ultimate: {fileID: 11400000, guid: f04b1f04b613941fda8cdd089146ec3a, type: 2}
---- !u!114 &3537175579400086549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5795061001092644436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33ac64482fb5c4ec7b286362ff80ecd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!70 &-7650717848293467131
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5795061001092644436}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.16}
-  m_Size: {x: 0.34, y: 0.32}
-  m_Direction: 0
---- !u!114 &-6645672371780568987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5795061001092644436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43427bfbd0f0a40f2a1b5ae206d4ec5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

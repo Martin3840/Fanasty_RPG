@@ -12,9 +12,9 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+        transform.Translate(horizontalInput * speed * Time.deltaTime * Vector3.right);
 
         float verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
+        transform.Translate(verticalInput * speed * Time.deltaTime * Vector3.forward);
     }
 }

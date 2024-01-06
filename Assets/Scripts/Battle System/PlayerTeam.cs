@@ -20,7 +20,8 @@ public class PlayerTeam : MonoBehaviour
         foreach (GameObject player in party)
         {
             Debug.Log("Player Spawned!");
-            OnCharacterSpawned?.Invoke(player.GetComponent<Character>());
+            GameObject newPlayer = Instantiate(player);
+            OnCharacterSpawned?.Invoke(newPlayer.GetComponent<Character>());
         }
     }
 }

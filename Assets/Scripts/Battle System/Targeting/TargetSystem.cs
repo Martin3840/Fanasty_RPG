@@ -7,7 +7,7 @@ public class TargetSystem : MonoBehaviour
 {
     public static TargetSystem Instance;
     public GameObject crosshairPrefab;
-    public static Character currentTarget;
+    public static GameObject currentTarget;
     public static PositionType currentPositionType;
     public List<GameObject> crosshairs;
 
@@ -25,16 +25,9 @@ public class TargetSystem : MonoBehaviour
         crosshairs.Add(newCrosshair);
     }
 
-    public void SetTarget(Character character)
+    public void SetTarget(GameObject target)
     {
-        currentTarget = character;
+        currentTarget = target;
         DisplayCrosshair();
     }
-}
-
-public enum TargetType
-{
-    mid,
-    left,
-    right
 }

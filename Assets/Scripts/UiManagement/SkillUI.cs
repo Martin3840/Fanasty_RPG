@@ -34,7 +34,6 @@ public class SkillUI : MonoBehaviour
         skill3.Setup(character.skill3.icon);
         ultimate.Setup(character.ultimate.icon);
 
-        Debug.Log("aosidaouefhouesf seufhso efhosue fhoushe f");
         this.transform.localScale = new Vector3(1, 1, 1);
     }
     void Hide(Character character)

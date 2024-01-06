@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Character : MonoBehaviour
 {
-    public static event Action<Character> OnBattleJoined;
     public static event Action<Character> OnTurnStart;
     public static event Action<Character> OnTurnEnded;
     public static event Action<Character> OnStaticDeath;
@@ -34,7 +33,6 @@ public class Character : MonoBehaviour
     public virtual void Awake()
     {
         UpdateStats();
-        OnBattleJoined?.Invoke(this);
     }
 
     public void UpdateStats()
@@ -47,7 +45,6 @@ public class Character : MonoBehaviour
         Debug.Log(name + "'s turn started!");
         foreach (Status effect in statusEffects)
             effect.Tick();
-        Character.OnTurnStart += skill1.Cast;
         OnTurnStart?.Invoke(this);
     }
     public void TurnEnd()

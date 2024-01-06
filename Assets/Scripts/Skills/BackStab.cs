@@ -6,6 +6,6 @@ public class BackStab : Skill
 {
     public override void Cast(Character caster)
     {
-        Debug.Log(caster.name + " Castef BackStab");
+        Debug.Log(caster.name + " Casted BackStab ");
     }
 }

@@ -16,7 +16,8 @@ public class BattleEvent : MonoBehaviour
     void Awake()
     {
         Character.OnTurnEnded += NextTurn;
-        Character.OnBattleJoined += AddCharacterToTurnOrder;
+        PlayerTeam.OnCharacterSpawned += AddCharacterToTurnOrder;
+        EnemyTeam.OnEnemySpawned += AddCharacterToTurnOrder;
         Character.OnStaticDeath += RemoveCharacterFromTurnOrder;
         StartCoroutine(DelayStart());
     }
@@ -33,8 +34,9 @@ public class BattleEvent : MonoBehaviour
 
     void OnDestroy()
     {
-        Character.OnTurnEnded += NextTurn;
-        Character.OnBattleJoined += AddCharacterToTurnOrder;
+        Character.OnTurnEnded -= NextTurn;
+        PlayerTeam.OnCharacterSpawned -= AddCharacterToTurnOrder;
+        EnemyTeam.OnEnemySpawned -= AddCharacterToTurnOrder;
         Character.OnStaticDeath -= RemoveCharacterFromTurnOrder;
     }
 

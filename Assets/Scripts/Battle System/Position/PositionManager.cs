@@ -28,7 +28,7 @@ public class PositionManager : MonoBehaviour
         {
             if (pos.character == null)
             {
-                pos.SpawnCharacter(character);
+                pos.BindCharacter(character);
                 break;
             }
         }

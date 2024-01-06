@@ -8,7 +8,7 @@ public class CharacterUIManager : MonoBehaviour
     public List<CharacterUI> characterUISlots = new();
     void Awake()
     {
-        Character.OnBattleJoined += Setup;
+        PlayerTeam.OnCharacterSpawned += Setup;
     }
 
     void Setup(Character character)

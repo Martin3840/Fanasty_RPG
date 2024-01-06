@@ -19,6 +19,7 @@ public class EnemyTeam : MonoBehaviour
         foreach (GameObject enemy in party)
         {
             Debug.Log("Enemy Spawned!");
+            GameObject newEnemy = Instantiate(enemy);
             OnEnemySpawned?.Invoke(enemy.GetComponent<Character>());
         }
     }

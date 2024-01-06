@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class Position : MonoBehaviour
 {
-    public Character character = null;
+    public Character character;
     public List<PositionType> positionType;
     public SpriteRenderer _spriteRenderer;
 
-    public void SpawnCharacter(Character character)
+    public void BindCharacter(Character newcharacter)
     {
-        this.character = character;
+        this.character = newcharacter;
         this.character.OnDeath += UnOccupied;
-
+        
         _spriteRenderer.sprite = this.character.sprite;
+
+        character.transform.parent = this.transform;
+        character.transform.position = this.transform.position;
     }
     void OnDisable()
     {
@@ -34,7 +37,7 @@ public class Position : MonoBehaviour
 
         if (positionType.Contains(TargetSystem.currentPositionType))
         {
-            TargetSystem.Instance.SetTarget(character);
+            TargetSystem.Instance.SetTarget(this.gameObject);
             Debug.Log("Clicked");
         }
     }
