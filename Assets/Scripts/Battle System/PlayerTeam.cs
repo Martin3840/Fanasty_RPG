@@ -8,16 +8,7 @@ public class PlayerTeam : MonoBehaviour
 {
     public static int total;
     public static GameObject currentPlayerTarget;
-    public static event Action<GameObject> OnCharacterSpawned;
-    [System.NonSerialized] public static List<GameObject> combatRoster = new();
-    public int Alive
-    {
-        get
-        {
-            return party.Count - Dead;
-        }
-    }
-    [System.NonSerialized] public int Dead;
+    public static event Action<Character> OnCharacterSpawned;
     public List<GameObject> party = new();
     void Awake()
     {
@@ -26,11 +17,10 @@ public class PlayerTeam : MonoBehaviour
     }
     void SpawnCharacters()
     {
-        foreach (GameObject gameObject in party)
+        foreach (GameObject player in party)
         {
             Debug.Log("Player Spawned!");
-            GameObject newGameObject = Instantiate(gameObject);
-            OnCharacterSpawned?.Invoke(newGameObject);
+            OnCharacterSpawned?.Invoke(player.GetComponent<Character>());
         }
     }
 }

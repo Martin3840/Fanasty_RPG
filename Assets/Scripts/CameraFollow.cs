@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset = new Vector3(0, 2, -5);
+    public Transform player;
+    public float smoothTime;
+    Vector3 velocity = Vector3.zero;
+    public Vector3 offset = new(0, 2, -5);
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
+        Vector3 newLocation = player.position + offset;
+        transform.position = Vector3.SmoothDamp(transform.position, newLocation, ref velocity, smoothTime);
+
+        transform.LookAt(player);
     }
 }

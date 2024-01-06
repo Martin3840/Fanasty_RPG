@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Character : MonoBehaviour
 {
     public static event Action<Character> OnBattleJoined;
@@ -12,11 +13,12 @@ public class Character : MonoBehaviour
     public event Action<int> OnDamaged;
     [System.NonSerialized] public float actionValue;
     public RPGStats baseStats;
+    public Sprite sprite;
     public Sprite profilePicture;
     public new string name;
     public int level;
-    public float currentHp;
-    public float currentMana;
+    [System.NonSerialized] public float currentHp;
+    [System.NonSerialized] public float currentMana;
     public bool isPlayer;
 
     public Skill passive;

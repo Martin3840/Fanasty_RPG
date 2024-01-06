@@ -7,60 +7,28 @@ public class TargetSystem : MonoBehaviour
 {
     public static TargetSystem Instance;
     public GameObject crosshairPrefab;
-    public static GameObject currentTarget;
-    public static GameObject leftTarget;
-    public static GameObject rightTarget;
-    readonly HashSet<GameObject> crosshairs = new();
+    public static Character currentTarget;
+    public static PositionType currentPositionType;
+    public List<GameObject> crosshairs;
 
     void Awake()
     {
         Instance = this;
-        BattleEvent.OnBattleStart += InitialTarget;
     }
-    void InitialTarget()
-    {
-        currentTarget = EnemyTeam.combatRoster[0];
-        leftTarget = EnemyTeam.GetLeftEnemy(currentTarget);
-        rightTarget = EnemyTeam.GetRightEnemy(currentTarget);
-        BattleEvent.OnBattleStart -= InitialTarget;
-        Debug.Log("got Inital Target");
-    }
-    public void DisplayCrosshair(bool adjacent)
+    public void DisplayCrosshair()
     {
         GameObject newCrosshair = Instantiate(crosshairPrefab, currentTarget.transform);
-        crosshairs.Add(newCrosshair);
-        if (adjacent)
-        {
-            if (leftTarget != null)
-            {
-                newCrosshair = Instantiate(crosshairPrefab, leftTarget.transform);
-                crosshairs.Add(newCrosshair);
-            }
-            if (rightTarget != null)
-            {
-                newCrosshair = Instantiate(crosshairPrefab, rightTarget.transform);
-                crosshairs.Add(newCrosshair);
-            }
-        }
-    }
-    public void UndisplayCrosshair()
-    {
+        
         foreach (GameObject crosshair in crosshairs)
-        {
             Destroy(crosshair);
-        }
+        
+        crosshairs.Add(newCrosshair);
     }
-    public static void SetTarget(GameObject target)
+
+    public void SetTarget(Character character)
     {
-        currentTarget = target;
-        leftTarget = EnemyTeam.GetLeftEnemy(target);
-        rightTarget = EnemyTeam.GetRightEnemy(target);
-    }
-    public static Character GetTarget(TargetType type)
-    {
-        if (currentTarget != null)
-            Debug.Log("The One Piece is real!");
-        return currentTarget.GetComponent<Character>();
+        currentTarget = character;
+        DisplayCrosshair();
     }
 }
 
